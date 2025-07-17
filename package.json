@@ -10,12 +10,15 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@react-router/dev": "^7.7.0",
     "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-fs": "^2.4.0",
     "@tauri-apps/plugin-opener": "^2",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.7.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2",
