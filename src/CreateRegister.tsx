@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { create, BaseDirectory } from "@tauri-apps/plugin-fs";
+import { BaseDirectory, copyFile } from "@tauri-apps/plugin-fs";
 
-async function handleCreateRegister() {
-    const riskRegister = await create("risk_register.xlsx", { baseDir: BaseDirectory.AppData });
+async function handleCreateRegister(fileName: string) {
+    await copyFile('/TEMPLATE-asset-based.xlsx', `${fileName}.xlsx`, {
+        toPathBaseDir: BaseDirectory.Temp
+    });
 }
 
 function CreateRegister() {
@@ -12,16 +14,18 @@ function CreateRegister() {
                 <i className="bi bi-chevron-left"></i>
             </NavLink>
             <div className="container">
-                <label className="form-label">Register Name</label>
-                <input />
-                <br />
-                <label className="form-label">Description</label>
-                <input />
-                <br />
-                <label className="form-label">Date</label>
-                <input type="date" />
-                <br />
-                <button className="btn btn-primary mt-2" onClick={() => console.log(BaseDirectory.AppData)}>Create Register</button>
+                <form>
+                    <label className="form-label">Register Name</label>
+                    <input />
+                    <br />
+                    <label className="form-label">Description</label>
+                    <input />
+                    <br />
+                    <label className="form-label">Date</label>
+                    <input type="date" />
+                    <br />
+                    <button className="btn btn-primary mt-2" onClick={() => handleCreateRegister("New name")}>Create Register</button>
+                </form>
             </div>
         </div>
     )
